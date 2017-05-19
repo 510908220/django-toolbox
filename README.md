@@ -23,11 +23,15 @@ django相关的一切~
 |          |             |
 
 ## 调试与优化
-| notebook | description |
-| -------- | ----------- |
-|          |             |
-|          |             |
-|          |             |
+| notebook                                 | description |
+| ---------------------------------------- | ----------- |
+| [django-silk](https://github.com/django-silk/silk) |             |
+| [django-debug-toolbar](https://github.com/jazzband/django-debug-toolbar/) |             |
+| [sentry](https://github.com/getsentry/sentry) |             |
+
+参考:
+- [light-profiling-with-django-debug-toolbar](http://dnozay.github.io/django,debugging,performance/2015/01/07/light-profiling-with-django-debug-toolbar.html)
+
 
 <br/>
 
