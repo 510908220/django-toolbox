@@ -1,0 +1,10 @@
+notebook:
+  image: jupyter/base-notebook
+  ports: 
+   - "9999:9999"
+  volumes: 
+   - ./:/home/jovyan/work
+  command: bash -c "start-notebook.sh --NotebookApp.token=''"
+
+
+   
