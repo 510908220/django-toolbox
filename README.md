@@ -102,7 +102,6 @@ django相关的一切~
 - 执行`manage.py shell_plus --print-sql`,在`shell`里操作`Model`可以看到每次执行的`sql`语句以及时间信息.
 
 
-如果是使用在
 | notebook | description |
 | -------- | ----------- |
 |          |             |
@@ -117,6 +116,7 @@ django相关的一切~
 - `cd python-toolbox`,执行`docker-compose up`. 打开浏览器，输入[http://192.168.0.66:9999](http://192.168.0.66:9999)
 
 TODO: 生成一个jupyter配置,设置密码、allow-root、ip等选项,重新打包一下.
+
 
 ## 参考
 - [awesome-django](http://awesome-django.com/)
