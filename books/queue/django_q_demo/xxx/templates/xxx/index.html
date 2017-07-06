@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,321 +13,354 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    
+
     <style>
         /*
  * Base structure
  */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
-
-
-/*
+        /* Move down content because we have a fixed navbar that is 50px tall */
+        
+        body {
+            padding-top: 50px;
+        }
+        /*
  * Global add-ons
  */
-
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/*
+        
+        .sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        /*
  * Top navigation
  * Hide default border to remove 1px line.
  */
-.navbar-fixed-top {
-  border: 0;
-}
-
-/*
+        
+        .navbar-fixed-top {
+            border: 0;
+        }
+        /*
  * Sidebar
  */
-
-/* Hide for mobile, show later */
-.sidebar {
-  display: none;
-}
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  }
-}
-
-/* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-}
-
-
-/*
+        /* Hide for mobile, show later */
+        
+        .sidebar {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 51px;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: block;
+                padding: 20px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                /* Scrollable contents if viewport is shorter than content. */
+                background-color: #f5f5f5;
+                border-right: 1px solid #eee;
+            }
+        }
+        /* Sidebar navigation */
+        
+        .nav-sidebar {
+            margin-right: -21px;
+            /* 20px padding + 1px border */
+            margin-bottom: 20px;
+            margin-left: -20px;
+        }
+        
+        .nav-sidebar>li>a {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        
+        .nav-sidebar>.active>a,
+        .nav-sidebar>.active>a:hover,
+        .nav-sidebar>.active>a:focus {
+            color: #fff;
+            background-color: #428bca;
+        }
+        /*
  * Main content
  */
-
-.main {
-  padding: 20px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-.main .page-header {
-  margin-top: 0;
-}
-
-
-/*
+        
+        .main {
+            padding: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .main {
+                padding-right: 40px;
+                padding-left: 40px;
+            }
+        }
+        
+        .main .page-header {
+            margin-top: 0;
+        }
+        /*
  * Placeholder dashboard ideas
  */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
+        
+        .placeholders {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .placeholders h4 {
+            margin-bottom: 0;
+        }
+        
+        .placeholder {
+            margin-bottom: 20px;
+        }
+        
+        .placeholder img {
+            display: inline-block;
+            border-radius: 50%;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-
+<body>
+    {% csrf_token %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Django Q Demo</a>
+                <a class="navbar-brand" href="#">Django Q Demo</a>
+            </div>
+
         </div>
-      
-      </div>
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+        <div class="row-fluid">
+            <div class="col-md-6">
 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
+                <fieldset>
+                    <div id="legend" class="">
+                        <legend class="">Task</legend>
+                    </div>
+                    <div class="control-group">
 
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                        <!-- Text input-->
+                        <label class="control-label" for="input01">斐波那数</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="num">
+                            <p class="help-block">建议在0~38之间,太大等的太久了</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"></label>
+
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-default" id="task">创建</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+            </div>
+            <div class="col-md-6">
+
+
+                <fieldset>
+                    <div id="legend" class="">
+                        <legend class="">Schedule</legend>
+                    </div>
+                    <div class="control-group">
+
+                        <!-- Text input-->
+                        <label class="control-label" for="input01">shedule名称</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="name">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <!-- Select Basic -->
+                        <label class="control-label">schedule_type</label>
+                        <div class="controls">
+                            <select class="input-xlarge" id="schedule_type">
+                            <option value="O">ONCE</option>
+                            <option value="I">MINUTES</option>
+                            <option value="H">HOURLY</option>
+                            <option value="D">DAILY</option>
+                            <option value="W">WEEKLY</option>
+                            <option value="M">MONTHLY</option>
+                            <option value="Q">QUARTERLY</option>
+                            <option value="Y">YEARLY</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"></label>
+
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-primary" id="schedule">创建</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+            </div>
         </div>
-      </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <div class="span6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    shedule
+                                </th>
+                                <th>
+                                    类型
+                                </th>
+                                <th>
+                                    下次运行时间
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="success">
+                                <td>
+                                    xxx
+                                </td>
+                                <td>
+                                    ONCE
+                                </td>
+                                <td>
+                                    0
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="span6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    任务id
+                                </th>
+                                <th>
+                                    任务名
+                                </th>
+                                <th>
+                                    开始时间
+                                </th>
+                                <th>
+                                    结束时间
+                                </th>
+                                <th>
+                                    结果
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="info">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    TB - Monthly
+                                </td>
+                                <td>
+                                    01/04/2012
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                                <td>
+                                    Default
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?  
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 
-  </body>
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection  
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+         var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                var csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        $("#task").click(function() {
+            axios.post('/tasks/', {
+
+                csrfmiddlewaretoken : csrftoken, 
+                    num: $("#num").val()
+                })
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        })
+    </script>
+</body>
+
 </html>
