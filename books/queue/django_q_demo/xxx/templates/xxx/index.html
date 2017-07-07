@@ -245,19 +245,8 @@
 
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="success">
-                                <td>
-                                    xxx
-                                </td>
-                                <td>
-                                    ONCE
-                                </td>
-                                <td>
-                                    0
-                                </td>
+                        <tbody id="schedule-list">
 
-                            </tr>
 
                         </tbody>
                     </table>
@@ -273,6 +262,9 @@
                                 <th>
                                     任务名
                                 </th>
+                                 <th>
+                                    组
+                                </th>
                                 <th>
                                     开始时间
                                 </th>
@@ -284,25 +276,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="info">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                            </tr>
-
+                        <tbody id="task-list">
                         </tbody>
                     </table>
                 </div>
@@ -313,9 +287,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/mustache.js/2.3.0/mustache.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+
     <script>
         function getCookie(name) {
             var cookieValue = null;
@@ -337,22 +313,75 @@
             // these HTTP methods do not require CSRF protection  
             return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
         }
-
         axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
+        Mustache.tags = ['[[', ']]'];
 
+        function fetch_tasks() {
+            axios.get('/tasks/')
+                .then(function(response) {
+                    var template = [
+                        '<tr class="info">',
+                        '<td>[[id]]</td>',
+                        '<td>[[name]]</td>',
+                        '<td>[[group]]</td>',
+                        '<td>[[started]]</td>',
+                        '<td>[[stopped]]</td>',
+                        '<td>[[result]]</td>',
+                        '</tr>',
+                    ].join("\n");
+                    for (let task of response.data) {
+                        $("#task-list").append(Mustache.render(template, task));
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
 
+        }
 
+        function fetch_shedules() {
+            axios.get('/schedules/')
+                .then(function(response) {
+                    var template = [
+                        '<tr class="success">',
+                        '<td>[[name]]</td>',
+                        '<td>[[schedule_type]]</td>',
+                        '<td>[[next_run]]</td>',
+                        '</tr>',
+                    ].join("\n");
+                    for (let task of response.data) {
+                        $("#schedule-list").append(Mustache.render(template, task));
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
         $("#task").click(function() {
             axios.post('/tasks/', {
                     num: $("#num").val()
                 })
                 .then(function(response) {
-                    console.log(response);
+                    location.reload();
                 })
                 .catch(function(error) {
                     console.log(error);
                 });
         })
+        $("#schedule").click(function() {
+            axios.post('/schedules/', {
+                    name: $("#name").val(),
+                    schedule_type: $("#schedule_type").val()
+                })
+                .then(function(response) {
+                    location.reload();
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        })
+        fetch_tasks();
+        fetch_shedules();
     </script>
 </body>
 
