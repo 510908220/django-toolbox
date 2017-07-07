@@ -47,7 +47,7 @@ django相关的一切~
 ## 任务队列
 | notebook | description |
 | -------- | ----------- |
-|  django-q       |             |
+|  [django-q](http://nbviewer.jupyter.org/github/510908220/django-toolbox/blob/master/books/queue/django-q.ipynb)       | 整理Django Q的使用,并实现一个例子            |
 |          |             |
 |          |             |
 <br/>
